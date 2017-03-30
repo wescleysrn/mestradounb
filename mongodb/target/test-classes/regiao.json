@@ -1,0 +1,27 @@
+[  
+   {  
+      "id":1,
+      "nome":"Norte",
+      "sigla":"NO"
+   },
+   {  
+      "id":2,
+      "nome":"Nordeste",
+      "sigla":"NE"
+   },
+   {  
+      "id":3,
+      "nome":"Sudeste",
+      "sigla":"SE"
+   },
+   {  
+      "id":4,
+      "nome":"Sul",
+      "sigla":"SU"
+   },
+   {  
+      "id":5,
+      "nome":"Centro-Oeste",
+      "sigla":"CO"
+   }
+]
