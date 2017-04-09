@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: analise-eleicoes-2014
+Implementation-Version: 1.0.0-SNAPSHOT
+Built-By: user
+Implementation-Vendor-Id: br.com.unb.bdm.neo4j
+Build-Jdk: 1.8.0_102
+Implementation-URL: http://projects.spring.io/spring-boot/analise-elei
+ coes-2014/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
