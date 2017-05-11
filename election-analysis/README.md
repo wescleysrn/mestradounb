@@ -2,12 +2,13 @@
 
 PROJETO FINAL DA DISCIPLINA BANCO DE DADOS MASSIVOS
 
-O projeto final visa analisar informaÁıes de campanha eleitoral com a utilizaÁ„o de banco de dados orientado a gr·fico, no caso o Neo4J.
+O projeto final visa analisar informa√ß√µes de campanha eleitoral com a utiliza√ß√£o de banco de dados orientado a gr√°fico, no caso o Neo4J.
 
 Para executar este projeto, deve-se ter: 
 
-- O Neo4J community rodando e disponÌvel em localhost:7474
-- Realizar checkout deste repositÛrio (git clone )
+- O Neo4J community rodando e dispon√≠vel em localhost:7474
+- Realizar checkout deste reposit√≥rio (git clone )
+- √â necess√°rio entrar na pasta src/main/resources/static/plugins e executar o comando bower install para carregar depend√™ncias .js
 - Dentro da pasta do projeto executar o seguinte comando mvn spring-boot:run
 
-O projeto estar· disponÌvel no contexto http://localhost:8080
+O projeto estar√° dispon√≠vel no contexto http://localhost:8080
