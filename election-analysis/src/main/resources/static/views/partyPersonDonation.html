@@ -64,7 +64,7 @@
 	                                    </thead>
 	                                    <tbody data-ng-repeat="largestDonors in ctrl.listLargestDonors" >
 	                                        <tr>
-	                                            <td class="text-center"><input data-ui-br-cpf-mask data-ng-model="largestDonors.cpf"></input></td>
+	                                            <td class="text-center">{{largestDonors.cpf}}</td>
 	                                            <td>{{largestDonors.name}}</td>
 	                                            <td class="text-right">{{largestDonors.totalDonation | currency:'R$':2}}</td>
 	                                            <td class="text-center">
