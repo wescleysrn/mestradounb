@@ -10,5 +10,6 @@ Para executar este projeto, deve-se ter:
 - Realizar checkout deste repositório (git clone )
 - É necessário entrar na pasta src/main/resources/static/plugins e executar o comando bower install para carregar dependências .js
 - Dentro da pasta do projeto executar o seguinte comando mvn spring-boot:run
+- Outra forma é na pasta do projeto executar o comando mvn clean package, com isso na pasta target será gerado o .war que pode ser publicado em um servidor de aplicação.
 
 O projeto estará disponível no contexto http://localhost:8080
