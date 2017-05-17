@@ -34,6 +34,34 @@
 
 <b>CARGA DOS DADOS</b>
 
+<p align="justify">A parte principal do trabalho foi a preparação da carga de dados obtidos do site do TSE em formato .txt, sendo estes arquivos abertos e integrantes da prestação de contas eleitoral dos candidatos e partidos nas eleições 2014, para isso foi realizado um tratamento nestes arquivos .txt com o uso da ferramenta Data Integration da suite Pentaho, com a intenção de separar os dados realmente importantes e gerar um arquivo .csv que é utilizado no banco de dados Neo4J para realização da carga.</p>
+<p align="justify">Informaçes sobre o Data Integration utilizado na carga dos dados, podem ser encontradas no seguinte endereço http://community.pentaho.com/projects/data-integration/, onde é possível realizar o download e seguindo as instruções a instalação da ferramenta em seu sistema operacional em uso.</p>
+<p align="justify">Uma vez instalado a ferramenta, foi trabalhado a estrutura dos arquivos de prestação de contas eleitorais que se resumem em três arquivos principais, sendo receitas_candidatos_2014_brasil.txt, receitas_comites_2014_brasil.txt, receitas_partidos_2014_brasil.txt no data integration foi criado Transformation para obter cada tipo de arquivo de carga necessário para inserir no banco Neo4J.</p>
+<p align="justify">Abaixo é exibido imagens dos Transformation's criados e sua estrutura:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/004.png">
+</p>
+
+<p align="justify">É importante notar que as transformações dos dados são realizados por meio dos componentes Data Integration, todos de fácil utilização, sendo utilizados basicamente, Input Stream, Select Value, Regular Expression, Filter Row, Sort Row, Merge Join e Output Stream, com isso foi possível gerar todos os arquivos de carga necessários.</p>
+<p align="justify">Abaixo, temos a imagem de um componente de transformação Regex Evalution, que foi utilizado para filtrar na transformação pessoas fisicas e pessoas juridicas.</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/005.png">
+</p>
+
+<p align="justify">Alguns tratamentos foram necessários no procedimento de tratamento dos dados para realização da carga, com o modelo proposto, houve a necessidade de simplificar os recebedores em duas entidades, sendo estas Partido e Candidato. Ocorre que os partidos possuem diversos comitês financeiros com inúmeros CNPJ's por todo o país, havendo a necessidade de filtrar essas doações de comitê para uma única entidade no caso o Partido. Isso foi realizado por meio de agregação dos dados e totalização dos comitês pela sigla do partido.</p>
+<p align="justify">Outro ponto de tratamento é que nos arquivos .txt do TSE constam doações realizadas entre Candidatos, entre comitê, de Partido para Candidato, etc. Esses tipos de operações não eram importantes para as perguntas que se gostaria de responder com o trabalho, sendo necessário excluir essas transações entre estas entidades, deixando somente doações de Pessoas Fisicas que não eram Candidato e de Empresas que não eram pertencentes a estrutura dos comitês partidários, sendo assim obtido somente doações diretas destes últimos</p>
+<p align="justify">Uma vez realizado todos os tratamentos um componente de output é inserido na transformação, gerando a saída de um arquivo .csv, como pode ser verificado na imagem abaixo:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/006.png">
+</p>
+
+<p align="justify"></p>
+<p align="justify"></p>
+<p align="justify"></p>
+
 
 
 PROJETO FINAL DA DISCIPLINA BANCO DE DADOS MASSIVOS
