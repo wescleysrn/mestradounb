@@ -4,11 +4,11 @@
 
 <b>Projeto fazendo uso de banco de dados orientado a grafo (Neo4J) e tecnologias java e angular:</b>
 
-<b>- Spring Boot</b>
-<b>- Spring Data Neo4J</b>
-<b>- Spring Rest</b>
-<b>- AngularJS</b>
-<b>- D3JS</b>
+<p>- Spring Boot</p>
+<p>- Spring Data Neo4J</p>
+<p>- Spring Rest</p>
+<p>- AngularJS</p>
+<p>- D3JS</p>
 
 <p align="justify">No cenário politico brasileiro, as doações de campanha são fontes de recursos importantes para financiar a politica nacional, neste contexto pessoas fisicas e pessoas juridicas são responsáveis por boa parcela do financiamento da campanha. Para alguns orgãos de controle e para a população em geral o conhecimento de quais empresas e setores economicos são responsáveis pelo financiamento de determinados candidatos e partidos é de extrema importância.</p>
 <p align="justify">Este projeto visa mostrar em tabelas estruturadas e gráficos as relações entre os doadores e recebedores, permitindo analises que demonstram quais doadores financiaram os dois lados da disputas, exibe casos de doações não baseadas em ideologia, favorecendo a detecção de casos que indicam a necessidade de maior aprofundamento na análise. Por exemplo, com base neste levantamento, a população em geral pode rastrear quanto de retorno essas empresas obtiveram em licitações nos anos seguintes, aqueles candidatos que foram financiados por um determinado setor economico, participam de comissões que atuam em regulações daquele setor ?. Essas e outras indagações podem ser exploradas uma vez que se obtenham informações que indiquem um determinado padrão.</p>
