@@ -52,27 +52,27 @@
 
 <p align="justify">Os arquivos que foram usados nas transformações, são disponibilizados a seguir, para que possa ser reproduzido por qualquer pessoa:</p>
 
-[DadosTSE_Candidato.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Candidato.ktr).
-[DadosTSE_Comite.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Comite.ktr).
-[DadosTSE_DoacaoPFCandidato.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPFCandidato.ktr).
-[DadosTSE_DoacaoPFPartido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPFPartido.ktr).
-[DadosTSE_DoacaoPJCandidato.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPJCandidato.ktr).
-[DadosTSE_DoacaoPJPartido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPJPartido.ktr).
-[DadosTSE_DoadorPessoaFisica.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoadorPessoaFisica.ktr).
-[DadosTSE_DoadorPessoaJuridica.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoadorPessoaJuridica.ktr).
-[DadosTSE_Partido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Partido.ktr).
+<p>[DadosTSE_Candidato.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Candidato.ktr).</p>
+<p>[DadosTSE_Comite.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Comite.ktr).</p>
+<p>[DadosTSE_DoacaoPFCandidato.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPFCandidato.ktr).</p>
+<p>[DadosTSE_DoacaoPFPartido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPFPartido.ktr).</p>
+<p>[DadosTSE_DoacaoPJCandidato.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPJCandidato.ktr).</p>
+<p>[DadosTSE_DoacaoPJPartido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoacaoPJPartido.ktr).</p>
+<p>[DadosTSE_DoadorPessoaFisica.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoadorPessoaFisica.ktr).</p>
+<p>[DadosTSE_DoadorPessoaJuridica.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoadorPessoaJuridica.ktr).</p>
+<p>[DadosTSE_Partido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Partido.ktr).</p>
 
 <p align="justify">Também estão aqui disponíveis os arquivos .csv gerados pelas transformações, que podem ser utilizadas para realizar a carga no banco Neo4J:</p>
 
-[CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/CANDIDATO.csv).
-[DOACAO_PF_CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PF_CANDIDATO.csv).
-[DOACAO_PF_PARTIDO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PF_PARTIDO.csv).
-[DOACAO_PJ_CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PJ_CANDIDATO.csv).
-[DOACAO_PJ_PARTIDO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PJ_PARTIDO.csv).
-[DOADORES_PF.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOADORES_PF.csv).
-[DOADORES_PJ.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOADORES_PJ.csv).
-[PARTIDOS.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/PARTIDOS.csv).
-[UFS.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/UFS.csv).
+<p>[CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/CANDIDATO.csv).</p>
+<p>[DOACAO_PF_CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PF_CANDIDATO.csv).</p>
+<p>[DOACAO_PF_PARTIDO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PF_PARTIDO.csv).</p>
+<p>[DOACAO_PJ_CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PJ_CANDIDATO.csv).</p>
+<p>[DOACAO_PJ_PARTIDO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PJ_PARTIDO.csv).</p>
+<p>[DOADORES_PF.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOADORES_PF.csv).</p>
+<p>[DOADORES_PJ.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOADORES_PJ.csv).</p>
+<p>[PARTIDOS.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/PARTIDOS.csv).</p>
+<p>[UFS.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/UFS.csv).</p>
 
 <p align="justify">Uma vez com os arquivos preparados, é possível realizar a carga no banco Neo4J por meio de uma ferramenta própria do banco que auxilia exatamente neste procedimento. Na seção a seguir será explicado o passo de carga do banco.</p>
 
