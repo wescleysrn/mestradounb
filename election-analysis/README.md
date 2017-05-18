@@ -117,18 +117,183 @@
 
 ### CARGA E CRIAÇÃO DE NODES
 ### NODES
-### State
+#### State
 
 		USING PERIODIC COMMIT
 		LOAD CSV WITH HEADERS FROM "file:///UFS.csv" AS line FIELDTERMINATOR ";"
 		CREATE (s:State{id:line.id, name:line.nome });
 
+#### Party
+
+		USING PERIODIC COMMIT
+		LOAD CSV WITH HEADERS FROM "file:///PARTIDOS.csv" AS line FIELDTERMINATOR ";"
+		CREATE (p:Party{id:line.id, initials:line.sigla, name:line.nome });
+
+		CREATE INDEX ON :Party(initials)
+
+#### Candidate
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///CANDIDATO.csv" AS line FIELDTERMINATOR ";"
+		CREATE (c:Candidate { id: line.ID, cnpj: line.CNPJ, name: line.NOME, cpf: line.CPF, number: line.NUMERO, office:line.CARGO })
+
+		CREATE INDEX ON :Candidate(cpf)
+		CREATE INDEX ON :Candidate(cnpj)
+
+#### Person
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///DOADORES_PF.csv" AS line FIELDTERMINATOR ";"
+		MERGE (p:Person { id: line.id, cpf: line.cpf, name: line.nome})
+
+		CREATE INDEX ON :Person(cpf)
+
+#### Company
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///DOADORES_PJ.csv" AS line FIELDTERMINATOR ";"
+		MERGE (c:Company { id: line.ID, cnpj: line.cnpj, name: line.nome, economicSector: line.setor})
+
+		CREATE INDEX ON :Company(cnpj)
+
+<p align="justify">Uma vez que foi criado os nodes, é possível a criação das relações entre eles, realizando a vinculação dos candidatos com os partidos e estados, e as doações que foram realizadas entre pessoa fisíca e jurídica para canditados e partidos.</p>
+
+### RELATIONSHIP
+
+#### Member_Of
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///CANDIDATO.csv" AS line FIELDTERMINATOR ";"
+		WITH DISTINCT line
+		MATCH (p:Party {initials: line.SIGLA_PARTIDO}), (c:Candidate {cpf: line.CPF})
+		CREATE (c)-[r:MEMBER_OF]->(p)
+
+#### Is_Running_In
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///CANDIDATO.csv" AS line FIELDTERMINATOR ";"
+		WITH DISTINCT line
+		MATCH (s:State {id: line.UF}), (c:Candidate {cpf: line.CPF})
+		CREATE (c)-[r:IS_RUNNING_IN]->(s)
+
+#### Donates_To
+#### Person_To_Candidate
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///DOACAO_PF_CANDIDATO.csv" AS line FIELDTERMINATOR ";"
+		MATCH (c:Candidate{cnpj:line.cpfCandidato})
+		MATCH (pf:Person{cpf:line.cpfDoador})
+		MERGE (pf)-[:DONATES_TO{ value: toFloat(line.valor), receipt:line.recibo}]->(c)
 
 
+#### Company_To_Candidate
 
-##CHYPER QUERY'S UTILIZADAS
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///DOACAO_PJ_CANDIDATO.csv" AS line FIELDTERMINATOR ";"
+		MATCH (c:Candidate{cnpj:line.cpfCandidato})
+		MATCH (cy:Company{cnpj:line.cnpjDoador})
+		MERGE (cy)-[:DONATES_TO{ value: toFloat(line.valor), receipt:line.recibo}]->(c)
 
-<p align="justify"></p>
+#### Person_To_Party
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///DOACAO_PF_PARTIDO.csv" AS line FIELDTERMINATOR ";"
+		MATCH (p:Party{initials:line.sigla})
+		MATCH (pf:Person{cpf:line.cpfDoador})
+		MERGE (pf)-[:DONATES_TO{ value: toFloat(line.valor), receipt:line.recibo}]->(p)
+
+#### Company_To_Party
+
+		USING PERIODIC COMMIT 10000
+		LOAD CSV WITH HEADERS FROM "file:///DOACAO_PJ_PARTIDO.csv" AS line FIELDTERMINATOR ";"
+		MATCH (p:Party{initials:line.sigla})
+		MATCH (cy:Company{cnpj:line.cnpjDoador})
+		MERGE (cy)-[:DONATES_TO{ value: toFloat(line.valor), receipt:line.recibo}]->(p)
+
+<p align="justify">Até o momento foram criadas os nodes e as relações que nesta abstração, foram suficientes para demonstrar as doações de campanhas, diretas e que foram realizadas por pessoa fisícas e jurídicas para canditatos e partidos.</p>
+<p align="justify">A partir daqui, podemos por meio da linguagem Chyper Query realizar consultas em respostas aos questionamentos iniciais.</p>
+
+
+## CHYPER QUERY'S UTILIZADAS
+
+<p align="justify">[Cypher Query](https://neo4j.com/developer/cypher-query-language/) é a linguagem de consulta gráfica aberta do Neo4j. A sintaxe de Cypher fornece uma maneira familiar de combinar padrões de nós e relacionamentos no gráfico. É uma linguagem extremamente poderosas e permite realizar consultas nos nodes e relacionamentos de forma bem intuitiva.</p>
+<p align="justify">A seguir será descrito as Chyper Query`s em resposta aos questionamentos:</p>
+<p align="justify">No que diz respeito aos candidatos:</p>
+
+#### Candidato
+#### Doações de Pessoa para Candidato
+
+		MATCH (c:Candidate)<-[r:DONATES_TO]-(p:Person) RETURN c,r,p
+
+#### Maiores doadores Pessoa para Candidato
+
+		MATCH (c:Candidate)<-[r:DONATES_TO]-(p:Person) RETURN p as person, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT 20
+
+#### Doações de Empresa para Candidato
+
+		MATCH (c:Candidate)<-[r:DONATES_TO]-(pj:Company) RETURN c,r,pj
+
+#### Maiores doadores Empresa para Candidato
+
+		MATCH (can:Candidate)<-[r:DONATES_TO]-(c:Company) RETURN c as company, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT 20
+
+<p align="justify">No que diz respeito aos partidos:</p>
+
+#### Partido
+#### Doações de Pessoa para Partido
+
+		MATCH (py:Party)<-[r:DONATES_TO]-(p:Person) RETURN py,r,p
+
+#### Maiores doadores Pessoa para Partido
+
+		MATCH (py:Party)<-[r:DONATES_TO]-(p:Person) RETURN p as person, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT 20
+
+#### Doações de Empresa para Partido
+
+		MATCH (py:Party)<-[r:DONATES_TO]-(pj:Company) RETURN py,r,pj
+
+#### Maiores doadores Empresa para Partido
+
+		MATCH (p:Party)<-[r:DONATES_TO]-(c:Company) RETURN c as company, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT 20
+
+#### Candidatos de um determinado partido
+
+		MATCH (p:Party{initials: 'PT'})<-[r:MEMBER_OF]-(c:Candidate) RETURN p,r,c
+
+#### Candidatos de um determinado partido para um cargo especifico
+
+		MATCH (p:Party{initials: 'PT'})<-[r:MEMBER_OF]-(c:Candidate{office:'GOVERNADOR'}) RETURN p,r,c
+
+<p align="justify">No que diz respeito aos doadores pessoa fisíca:</p>
+
+#### Person
+#### Maiores doadores pessoa fisica
+
+		MATCH (n)<-[r:DONATES_TO]-(p:Person) RETURN p as person, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT 20
+
+<p align="justify">No que diz respeito aos doadores pessoa jurídica:</p>
+
+#### Company
+#### Maiores doadores pessoa juridica
+
+		MATCH (n)<-[r:DONATES_TO]-(c:Company) RETURN c as company, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT
+
+<p align="justify">No que diz respeito aos estados:</p>
+
+#### State
+#### Candidatos que concorrem por um determinado estado
+
+		MATCH (s:State)<-[r:IS_RUNNING_IN]-(c:Candidate) RETURN s,r,c LIMIT
+
+<p align="justify">Vale ressaltar que as query's aqui descritas são somente exemplificativas, podem existir uma lista com infinitas query`s possíveis para analisar os dados abertos da prestação de contas eleitoral do STE. Assim a ideia do projeto é estigar novas buscas e aplicar essa lógica em futuras prestações de contas.</p>
+<p align="justify">Vejam que é possível expandir bastante esse projeto, podendo por exemplo ser dado carga dos beneficios que as empresas receberam nos anos seguintes em licitações públicas, destas licitações quais as que apresentaram aditivos, apresentando valor final bem maior que o inicialmente contratado. Dos doadores pessoa fisíca, quem são estas pessoas ? Possuem vinculo com alguma empresa de um determinado setor economico ? Como podemos montar sub-gráficos de grupos empresariais ? Como podemos ligar essas empresas por sócios ? etc. São algumas possibilidades de expansão deste trabalho.</p>
+<p align="justify">A seguir será falado sobre o código fonte do projeto que consome essa base de dados Neo4J e apresenta uma proposta visual para permitir a visualização de algumas informações obtidas atráves da base de dados.</p>
+
+
+## O PROJETO DE APRESENTAÇÃO
+
+<p align="justify">A arquitetura do projeto foi aqui disponibilizada, visando o interesse de colaboradores e financiadores para sua publicação, qualquer colaboração ou feedback será bem vinda.</p>
+<p align="justify">.</p>
 
 
 PROJETO FINAL DA DISCIPLINA BANCO DE DADOS MASSIVOS
