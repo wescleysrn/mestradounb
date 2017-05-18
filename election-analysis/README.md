@@ -1,6 +1,6 @@
-#ANALISE DE RELAÇÕES ENTRE DOADORES E RECEBEDORES NAS ELEIÇÕES 2014 NO BRASIL
+# ANALISE DE RELAÇÕES ENTRE DOADORES E RECEBEDORES NAS ELEIÇÕES 2014 NO BRASIL
 
-##DESCRIÇÃO GERAL
+## DESCRIÇÃO GERAL
 
 <p align="justify">No cenário politico brasileiro, as doações de campanha são fontes de recursos importantes para financiar a politica nacional, neste contexto pessoas fisicas e pessoas juridicas são responsáveis por boa parcela do financiamento da campanha. Para alguns orgãos de controle e para a população em geral o conhecimento de quais empresas e setores economicos são responsáveis pelo financiamento de determinados candidatos e partidos é de extrema importância.</p>
 <p align="justify">Este projeto visa mostrar em tabelas estruturadas e gráficos as relações entre os doadores e recebedores, permitindo analises que demonstram quais doadores financiaram os dois lados da disputas, exibe casos de doações não baseadas em ideologia, favorecendo a detecção de casos que indicam a necessidade de maior aprofundamento na análise. Por exemplo, com base neste levantamento, a população em geral pode rastrear quanto de retorno essas empresas obtiveram em licitações nos anos seguintes, aqueles candidatos que foram financiados por um determinado setor economico, participam de comissões que atuam em regulações daquele setor ?. Essas e outras indagações podem ser exploradas uma vez que se obtenham informações que indiquem um determinado padrão.</p>
@@ -24,7 +24,7 @@
 
 <p align="justify">Podemos notar que a visualização das informações se faz de maneira bem intuitiva, possuindo um menu de navegação lateral e áreas de informações bem definidas no dashboard principal, nas sessões seguintes será descrito os passos para carga das informações obtidas de fontes abertas como dito anteriormente, como preparar e realizar carga no banco de dados Neo4J e um pouco da arquitetura desenvolvida para apresentar essas informações.</p>
 
-##PREPARAÇÃO DOS DADOS
+## PREPARAÇÃO DOS DADOS
 
 <p align="justify">A parte principal do trabalho foi a preparação da carga de dados obtidos do site do TSE em formato .txt, sendo estes arquivos abertos e integrantes da prestação de contas eleitoral dos candidatos e partidos nas eleições 2014, para isso foi realizado um tratamento nestes arquivos .txt com o uso da ferramenta Data Integration da suite Pentaho, com a intenção de separar os dados realmente importantes e gerar um arquivo .csv que é utilizado no banco de dados Neo4J para realização da carga.</p>
 <p align="justify">Informaçes sobre o Data Integration utilizado na carga dos dados, podem ser encontradas no seguinte endereço http://community.pentaho.com/projects/data-integration/, onde é possível realizar o download e seguindo as instruções a instalação da ferramenta em seu sistema operacional em uso.</p>
@@ -76,7 +76,7 @@
 
 <p align="justify">Uma vez com os arquivos preparados, é possível realizar a carga no banco Neo4J por meio de uma ferramenta própria do banco que auxilia exatamente neste procedimento. Na seção a seguir será explicado o passo de carga do banco.</p>
 
-##INSTALAÇÃO NEO4J
+## INSTALAÇÃO NEO4J
 
 <p align="justify">Neo4j é um sistema de gerenciamento de banco de dados de gráficos desenvolvido pela Neo Technology, Inc. Descrito por seus desenvolvedores como um banco de dados transacional compatível com ACID com armazenamento e processamento de gráficos nativos, Neo4j é o banco de dados gráfico mais popular de acordo com db-engines.com. O código do projeto pode ser visualizado no Github com suporte no StackOverflow e Google Groups, utilizado por centenas de milhares de companias e organizações em quase todos os mercados. Casos de uso incluem gerenciamento de rede, softwares analiticos, pesquisa cientifica, roteamento, gestão organizacional e de projeto, recomendações, redes sociais e muito mais.</p>
 <p align="justify">Para o nosso trabalho foi essencial por possibilitar consultas de relações de forma rápida, exibindo os vinculos de doadores e recebedores com base na carga de dados obtidos da prestação de contas eleitoral brasileira de 2014. Outras relações podem ser exploradas e é possível aplicar funções típicas de grafos para pesquisar padrões ainda não observados.</p>
@@ -109,15 +109,15 @@
 
 <p align="justify">A instalação descrita aqui é uma instalação local, facilitando quem for reproduzir o trabalho de ter tudo necessário para rodar a aplicação. Em um trabalho de publicação, recomendasse a instalação do banco em um servidor, sendo este procedimento de instalação, facilmente executado seguindo a documentação oficial.</p>
 
-##CARGA DOS DADOS
+## CARGA DOS DADOS
 
 <p align="justify">Uma vez com o banco de dados instalado é possível realizar a carga dos dados preparados em etapa anterior, a própria interface visual do Neo4J disponível no contexto http://localhost:7474/browser/, no caso da instalação local, apresenta terminal de linha de comando que pode ser utilizado para carga dos arquivos .csv`s.</p>
 <p align="justify">Os arquivos .csv devem ser copiados para a pasta padrão do banco, dentro de uma sub-pasta chamada 'import', devendo esta ser criada, caso não exista. Assim os comandos de load irão encontrar os arquivos de carga.</p>
 <p align="justify">A seguir será descrito os comandos executados para realização da carga:</p>
 
-###CARGA E CRIAÇÃO DE NODES
-###NODES
-###State
+### CARGA E CRIAÇÃO DE NODES
+### NODES
+### State
 
 		USING PERIODIC COMMIT
 		LOAD CSV WITH HEADERS FROM "file:///UFS.csv" AS line FIELDTERMINATOR ";"
