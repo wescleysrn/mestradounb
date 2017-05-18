@@ -216,7 +216,7 @@
 
 ## CHYPER QUERY'S UTILIZADAS
 
-<p align="justify">[Cypher Query](https://neo4j.com/developer/cypher-query-language/) é a linguagem de consulta gráfica aberta do Neo4j. A sintaxe de Cypher fornece uma maneira familiar de combinar padrões de nós e relacionamentos no gráfico. É uma linguagem extremamente poderosas e permite realizar consultas nos nodes e relacionamentos de forma bem intuitiva.</p>
+[Cypher Query](https://neo4j.com/developer/cypher-query-language/) <p align="justify">é a linguagem de consulta gráfica aberta do Neo4j. A sintaxe de Cypher fornece uma maneira familiar de combinar padrões de nós e relacionamentos no gráfico. É uma linguagem extremamente poderosas e permite realizar consultas nos nodes e relacionamentos de forma bem intuitiva.</p>
 <p align="justify">A seguir será descrito as Chyper Query`s em resposta aos questionamentos:</p>
 <p align="justify">No que diz respeito aos candidatos:</p>
 
