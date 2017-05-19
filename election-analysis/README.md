@@ -365,35 +365,25 @@
 </p>
 
 <p align="justify">Dito isto, temos uma descrição resumida da camada de servidor que fica responsável por buscar informações no banco Neo4J e transporta-las para a camada de apresentação. A seguir será descrito a camada que processa essas informações e as exibe.</p>
+A camada de apresentação utiliza tecnologia [AngularJS](https://angularjs.org/) e [D3JS](https://d3js.org/) para visualização dos gráficos gerados pelo Neo4J. 
+<p align="justify">É importante falar que buscou-se uma padronização em pastas seguindo o padrão MVC, portanto temos visivelmente pastas para controller, model e view, porém não tão restrito, possuindo separado pastas para estilo, java script e html. Abaixo uma imagem exibe essa separação.</p>
 
-<p align="justify"></p>
-<p align="justify"></p>
-<p align="justify"></p>
-<p align="justify"></p>
-<p align="justify"></p>
-<p align="justify"></p>
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/020.png">
+</p>
 
+<p align="justify">Outra informação relevante sobre essa camada, é mencionar o uso do ocLazyLoad, que em versões mais recentes do AngularJS já incorpora isso, porém na versão utilizada é incluída como plugin, isto possibilita trabalhar modulos separados e carregados sob demanda, permitindo assim expandir a camada de apresentação para inúmeras rotas e áreas de site, sem prejudicar a performance, pois estes modulos serão carregados somente quando acessados pela rota de navegação.</p>
+<p align="justify">Abaixo é exibido trecho de código existente no arquivo config.js, um arquivo muito importante e onde estão escritas as rotas dos modulos com uso do ocLazyLoad:</p>
 
-PROJETO FINAL DA DISCIPLINA BANCO DE DADOS MASSIVOS
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/021.png">
+</p>
 
-O projeto final visa analisar informações de campanha eleitoral com a utilização de banco de dados orientado a gráfico, no caso o Neo4J.
+<p align="justify">Estes são os detalhes que julguei importante descrever sobre o projeto, embora desenvolvedores experientes podem entender facilmente o código e melhorar. Com esta descrição do trabalho esperamos facilitar sua reprodução e confirmar os dados importantes obtidos atráves de fontes de dados abertos e que podem ser utilizados para apresentar informações importantes para a sociedade.</p>
 
-Para executar este projeto, deve-se ter: 
+## CONCLUSÃO
 
-- O Neo4J community rodando e disponível em localhost:7474
-- Realizar checkout deste repositório (git clone )
-- É necessário entrar na pasta src/main/resources/static/plugins e executar o comando bower install para carregar dependências .js
-- Dentro da pasta do projeto executar o seguinte comando mvn spring-boot:run
-- Outra forma é na pasta do projeto executar o comando mvn clean package, com isso na pasta target será gerado o .war que pode ser publicado em um servidor de aplicação.
-
-O projeto estará disponível no contexto http://localhost:8080
-
-
-<b>Projeto fazendo uso de banco de dados orientado a grafo (Neo4J) e tecnologias java e angular:</b>
-
-<p>- Spring Boot</p>
-<p>- Spring Data Neo4J</p>
-<p>- Spring Rest</p>
-<p>- AngularJS</p>
-<p>- D3JS</p>
-
+<p align="justify">Embora este trabalho tenha sido realizado como trabalho final da disciplina de Banco de Dados Massivos do mestrado profissional em computação aplicada da UnB - Universidade de Brasília, acreditamos no potencial de um projeto aberto e que leve este conceito de processar os dados abertos de doações de campanha como ponto de partida para realizar análises entre doadores e recebedores e quais as implicações desses financiamentos, auxiliando a população em geral na fiscalização do dinheiro público e direcionar auditorias mais detalhadas na investigação de possíveis beneficios politicos.</p>
+<p align="justify">Vale lembrar que a simples doação de campanha, não indica má-fé servindo somente de indicador para analises mais profundas sobre a relação das empresas e pessoas com o cenário politico brasileiro. Sugerimos inclusive a carga de mais informações em trabalhos futuros, para possibilitar melhor interpretação e abrir oportunidade para conclusões fundamentadas.</p>
+<p align="justify">Podemos acompanhar o trabalho de candidatos que foram fortemente financiados por determinados setores da economia, associando seu trabalho com legislações que trazem beneficios a esses setores, podemos acompanhar as licitações das empresas financiadoras e determinar aquelas que tiveram aditivos nos contratos públicos e demais indicativos que favoreçam uma investigação mais detalhada.</p>
+<p align="justify">Por fim, acreditamos que as doações de campanha sejam um ponto de partida importante para ser considerado pela sociedade que busca cada vez mais transparência e bom uso do dinheiro público.</p>
