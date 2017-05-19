@@ -275,7 +275,7 @@
 <p align="justify">Ao executar a chyper query é exibido em formato de gráfico o retorno da consulta como mostrado abaixo, aqui é demonstrado que a query possue um limit padrão de 300, caso não seja informado nenhum:</p>
 
 <p align="center">
-  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/012.png">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/013.png">
 </p>
 
 #### Candidatos de um determinado partido para um cargo especifico
@@ -311,7 +311,67 @@
 ## O PROJETO DE APRESENTAÇÃO
 
 <p align="justify">A arquitetura do projeto foi aqui disponibilizada, visando o interesse de colaboradores e financiadores para sua publicação, qualquer colaboração ou feedback será bem vinda.</p>
-<p align="justify">.</p>
+<p align="justify">O código fonte do projeto é uma proposta de aplicação consumindo os dados trabalhados no banco de dados Neo4J, como este está disponível será comentado de forma suncinta as camadas, as tecnologias empregadas e os procedimentos necessários para rodar a aplicação.</p>
+<p align="justify">Foi utilizado JDK 8 e alguns frameworks. Inicialmente é necessário baixar o código, acessar a pasta /election-analysis/src/main/resources/static/plugins e executar comando bower para baixar as dependências java script, conforme demonstrado abaixo:</p>
+
+		bower install
+
+<p align="justify">O comando irá baixar todas as dependências java script necessárias ao projeto que estão descritas no arquivo bower.json existente na mesma pasta onde o comando foi executado. Ocorrendo sucesso, será possível visualizar o conteúdo gerado na pasta bower_components que será gerada, abaixo imagem de termino da execução:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/014.png">
+</p>
+
+<p align="justify">Uma vez gerado as dependências java script, pode-se executar, a partir da pasta raiz do projeto, o comando spring boot para rodar a aplicação, conforme demonstrado abaixo:</p>
+
+		mvn spring-boot:run
+
+<p align="justify">Ocorrendo sucesso será exibido uma tela similar a exibida abaixo, sinalizando que a aplicação se encontra rodando e disponível para acesso na porta 8080, como pode ser verificado:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/015.png">
+</p>
+
+<p align="justify">Outra forma de publicar é por meio do comando maven package, ou install sendo gerado na pasta target do projeto o .war do projeto que pode ser publicado em um servidor de aplicação:</p>
+
+		mvn clean -X package
+		ou
+		mvn clean -X install
+
+<p align="justify">Por meio dos procedimentos descritos acima é possível rodar a aplicação para visualizar suas funcionalidades pelo browser, a seguir será descrito brevemente as camadas da arquitetura proposta.</p>
+<p align="justify">No arquivo pom.xml pode-se conferir as dependências do projeto, destacando o spring data neo4j, spring boot started web e o spring boot data rest, com isso foi formulado as camadas da arquitetura.</p>
+<p align="justify">Inicialmente o pacote node mapeia os nodes Neo4J em entidades java, devendo ser destacado a anotação spring data neo4j @NodeEntity, conforme pode ser verificado na imagem abaixo:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/016.png">
+</p>
+
+<p align="justify">Tão importante quanto, o pacote relationship possue o mapeamento das relações criadas no banco Neo4J, devendo sempre ser anotadas com @RelationshipEntity e possuir um @StartNode que deve ser um node e @EndNode igualmente outro node, como demonstrado abaixo:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/017.png">
+</p>
+
+<p align="justify">A camada repository possue uma função importante por ser nela que as buscas com Chyper Query foram criadas, com o uso do framework de persistência spring data neo4j, diversas funcionalidades, como paginação e buscas declarativas são herdadas do framework, deixando a implementação bastante enxuta, como pode ser observado na imagem a seguir:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/018.png">
+</p>
+
+<p align="justify">Para levar as informações processadas nestas camadas para a camada de apresentação, foi produzido no pacote rest serviços web rest que podem ser consumidos por diversos framework`s e tecnologias na camada de apresentação. Como foi utilizado uma camada de serviços para ligar a camada rest com a camada dao as implementações desta camada se tornam bem simples e reduzidas, como demonstrado pela imagem abaixo:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/019.png">
+</p>
+
+<p align="justify">Dito isto, temos uma descrição resumida da camada de servidor que fica responsável por buscar informações no banco Neo4J e transporta-las para a camada de apresentação. A seguir será descrito a camada que processa essas informações e as exibe.</p>
+
+<p align="justify"></p>
+<p align="justify"></p>
+<p align="justify"></p>
+<p align="justify"></p>
+<p align="justify"></p>
+<p align="justify"></p>
 
 
 PROJETO FINAL DA DISCIPLINA BANCO DE DADOS MASSIVOS
