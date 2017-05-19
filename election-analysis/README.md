@@ -216,7 +216,7 @@
 
 ## CHYPER QUERY'S UTILIZADAS
 
-[Cypher Query](https://neo4j.com/developer/cypher-query-language/)é a linguagem de consulta gráfica aberta do Neo4j. A sintaxe de Cypher fornece uma maneira familiar de combinar padrões de nós e relacionamentos no gráfico. É uma linguagem extremamente poderosas e permite realizar consultas nos nodes e relacionamentos de forma bem intuitiva.
+[Cypher Query](https://neo4j.com/developer/cypher-query-language/) é a linguagem de consulta gráfica aberta do Neo4j. A sintaxe de Cypher fornece uma maneira familiar de combinar padrões de nós e relacionamentos no gráfico. É uma linguagem extremamente poderosas e permite realizar consultas nos nodes e relacionamentos de forma bem intuitiva.
 <p align="justify">A seguir será descrito as Chyper Query`s em resposta aos questionamentos:</p>
 <p align="justify">No que diz respeito aos candidatos:</p>
 
@@ -224,6 +224,12 @@
 #### Doações de Pessoa para Candidato
 
 		MATCH (c:Candidate)<-[r:DONATES_TO]-(p:Person) RETURN c,r,p
+
+<p align="justify">Ao executar a chyper query é exibido em formato de gráfico o retorno da consulta, como mostrado abaixo:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/011.png">
+</p>
 
 #### Maiores doadores Pessoa para Candidato
 
@@ -256,9 +262,21 @@
 
 		MATCH (p:Party)<-[r:DONATES_TO]-(c:Company) RETURN c as company, sum(r.value) as totalDonation ORDER BY totalDonation DESC LIMIT 20
 
+<p align="justify">Ao executar a chyper query é exibido em formato de tabela o retorno da consulta, como mostrado abaixo:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/012.png">
+</p>
+
 #### Candidatos de um determinado partido
 
 		MATCH (p:Party{initials: 'PT'})<-[r:MEMBER_OF]-(c:Candidate) RETURN p,r,c
+
+<p align="justify">Ao executar a chyper query é exibido em formato de gráfico o retorno da consulta como mostrado abaixo, aqui é demonstrado que a query possue um limit padrão de 300, caso não seja informado nenhum:</p>
+
+<p align="center">
+  <img src="https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/012.png">
+</p>
 
 #### Candidatos de um determinado partido para um cargo especifico
 
