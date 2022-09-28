@@ -62,17 +62,14 @@
 [DadosTSE_DoadorPessoaJuridica.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_DoadorPessoaJuridica.ktr).</br>
 [DadosTSE_Partido.ktr](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/ktl/DadosTSE_Partido.ktr).</br>
 
-<p align="justify">Também estão aqui disponíveis os arquivos .csv gerados pelas transformações, que podem ser utilizadas para realizar a carga no banco Neo4J:</p>
-
-[CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/CANDIDATO.csv).</br>
-[DOACAO_PF_CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PF_CANDIDATO.csv).</br>
-[DOACAO_PF_PARTIDO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PF_PARTIDO.csv).</br>
-[DOACAO_PJ_CANDIDATO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PJ_CANDIDATO.csv).</br>
-[DOACAO_PJ_PARTIDO.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOACAO_PJ_PARTIDO.csv).</br>
-[DOADORES_PF.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOADORES_PF.csv).</br>
-[DOADORES_PJ.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/DOADORES_PJ.csv).</br>
-[PARTIDOS.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/PARTIDOS.csv).</br>
-[UFS.csv](https://github.com/wescleysrn/mestradounb/blob/master/imagens/election-analysis/csv/UFS.csv).</br>
+<p align="justify">Os arquivos .csv resultados do processo de tratamento dos dados públicos não são expostos neste repositório por envolver dados pessoas, sendo necessário para sua reprodução a execução do processo via arquivos .ktl do Pentaho.</p>
+<p align="justify">Como orientação a este repositório, informamos aqueles que forem reproduzir o trabalho ficarem atentos as seguintes questões:</p>
+<p align="justify">- A LGPD se relaciona de certa forma a Lei de Acesso a Informação (LAI) e com princípios constitucionais, como o de que “todos têm direito a receber dos órgãos públicos informações de seu interesse particular, ou de interesse coletivo ou geral, ressalvadas aquelas cujo sigilo seja imprescindível à segurança da sociedade e do Estado”.</p>
+<p align="justify">- Há hipótese trazida pela Lei Geral de Proteção de Dados em que não é necessário ter o consentimento prévio do titular para se realizar o tratamento dos dados. Ela está prevista nos §§ 3º e 4º do art. 7º da LGPD: <br>
+3º O tratamento de dados pessoais cujo acesso é público deve considerar a finalidade, a boa-fé e o interesse público que justificaram sua disponibilização.<br>
+4º É dispensada a exigência do consentimento previsto no caput deste artigo para os dados tornados manifestamente públicos pelo titular, resguardados os direitos do titular e os princípios previstos nesta Lei.<br>
+7º O tratamento posterior dos dados pessoais a que se referem os §§ 3º e 4º deste artigo poderá ser realizado para novas finalidades, desde que observados os propósitos legítimos e específicos para o novo tratamento e a preservação dos direitos do titular, assim como os fundamentos e os princípios previstos nesta Lei.<br></p>
+<p align="justify">Porém muitos afirmam que os chamados dados públicos são aqueles encontrados nos portais das autoridades estatais, como os dados disponíveis até nos sites ligados à justiça, receita federal. Já os manifestamente públicos pelo titular, podem ser lidos como os dados publicados e compartilhados abertamente pelos titulares, por exemplo, nas redes sociais. Sendo assim, ao reproduzir este trabalho ficar atento para não divulgar os dados pessoais ou publicar o projeto de software sem um maior embasamento juridico a respeito da LGPD.</p>
 
 <p align="justify">Uma vez com os arquivos preparados, é possível realizar a carga no banco Neo4J por meio de uma ferramenta própria do banco que auxilia exatamente neste procedimento. Na seção a seguir será explicado o passo de carga do banco.</p>
 
